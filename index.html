@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Опровержение концепции «животное-машина» Декарта</title>
+    <style>
+        :root {
+            --bg: #fdfaf3;
+            --text: #2c3e2d;
+            --gold: #b89b4b;
+            --green: #2e5e2e;
+            --light-green: #e9f3e9;
+            --card-bg: #ffffff;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --border: 1px solid #d4c9a8;
+            --radius: 12px;
+            --transition: 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Title Page */
+        .title-page {
+            background: var(--green);
+            color: #fff;
+            text-align: center;
+            padding: 60px 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        .title-page::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .title-page h1 {
+            font-size: 2.4rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .title-page .sub {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        .title-page .meta {
+            font-size: 1rem;
+            opacity: 0.8;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            display: inline-block;
+            padding-top: 15px;
+            margin-top: 10px;
+        }
+
+        /* Plan */
+        .plan {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+            border-left: 6px solid var(--gold);
+        }
+        .plan h2 {
+            color: var(--green);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        .plan ol {
+            padding-left: 20px;
+            counter-reset: item;
+            list-style: none;
+        }
+        .plan li {
+            counter-increment: item;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: baseline;
+        }
+        .plan li::before {
+            content: counter(item) ".";
+            color: var(--gold);
+            font-weight: bold;
+            margin-right: 10px;
+            min-width: 24px;
+        }
+        .plan a {
+            color: var(--green);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--gold);
+            transition: var(--transition);
+        }
+        .plan a:hover {
+            color: var(--gold);
+            border-bottom-color: var(--green);
+        }
+
+        /* Sections */
+        .section {
+            background: var(--card-bg);
+            padding: 35px 30px;
+            margin-bottom: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: var(--border);
+            transition: transform 0.2s;
+        }
+        .section:hover {
+            transform: translateY(-2px);
+        }
+        .section h2 {
+            color: var(--green);
+            font-size: 1.7rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 10px;
+        }
+        .section p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        .quote {
+            background: var(--light-green);
+            padding: 18px 22px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-style: italic;
+            border-right: 4px solid var(--gold);
+            font-size: 1.05rem;
+        }
+        .arabic {
+            direction: rtl;
+            font-family: 'Traditional Arabic', 'Scheherazade New', serif;
+            font-size: 1.5rem;
+            color: var(--green);
+            margin: 10px 0;
+            text-align: right;
+        }
+        .ref {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+            font-style: normal;
+        }
+
+        .conclusion {
+            background: linear-gradient(135deg, #2e5e2e, #1e3e1e);
+            color: #fff;
+            padding: 35px 30px;
+            border-radius: var(--radius);
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+        }
+        .conclusion h2 {
+            color: #ffd966;
+            margin-bottom: 20px;
+        }
+        .conclusion p {
+            color: #f0e6d2;
+        }
+
+        .sources {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: var(--border);
+            margin-bottom: 40px;
+        }
+        .sources h2 {
+            color: var(--green);
+            margin-bottom: 15px;
+        }
+        .sources ul {
+            padding-left: 25px;
+        }
+        .sources li {
+            margin-bottom: 8px;
+            color: #3a3a3a;
+        }
+
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--gold);
+            color: #fff;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 45px;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            cursor: pointer;
+            z-index: 100;
+            text-decoration: none;
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            .title-page h1 { font-size: 1.8rem; }
+            .section { padding: 20px; }
+        }
+
+        /* Smooth scroll behavior already set via html, but JS will enhance */
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Титульный лист -->
+    <header class="title-page" id="top">
+        <h1>Опровержение концепции «животное-машина»<br>Рене Декарта</h1>
+        <div class="sub">в свете Корана и хадисов</div>
+        <div class="meta">Выполнил: [Ваше имя] &nbsp;|&nbsp; 1 мая 2026 г.</div>
+    </header>
+
+    <!-- План -->
+    <section class="plan">
+        <h2>План доклада</h2>
+        <ol>
+            <li><a href="#intro">Введение: учение Декарта о животных-автоматах</a></li>
+            <li><a href="#sec1">Животные обладают духом и являются общинами, подобными людям</a></li>
+            <li><a href="#sec2">Животные славят Аллаха и поклоняются Ему</a></li>
+            <li><a href="#sec3">Права животных и запрет жестокости в Коране и Сунне</a></li>
+            <li><a href="#sec4">Животные обладают чувствами и получают воздаяние</a></li>
+            <li><a href="#sec5">Животные в День воскресения и справедливость</a></li>
+            <li><a href="#concl">Заключение</a></li>
+            <li><a href="#sources">Источники</a></li>
+        </ol>
+    </section>
+
+    <!-- Введение -->
+    <section class="section" id="intro">
+        <h2>Введение</h2>
+        <p>Французский философ XVII века Рене Декарт выдвинул теорию, согласно которой животные — это сложные автоматы, лишённые души, разума и способности чувствовать. Их движения, крики и поведение, по его мнению, полностью объясняются механикой, подобно часовому механизму. Этот взгляд опирался на дуализм «мыслящей субстанции» (души), присущей лишь человеку, тогда как животные принадлежат исключительно миру протяжённой материи.</p>
+        <p>В исламе, напротив, Священный Коран и хадисы Пророка Мухаммада (мир ему и благословение Аллаха) рисуют принципиально иную картину: животные обладают духовной жизнью, имеют права, сознательно поклоняются Создателю и будут воскрешены для справедливого воздаяния. Настоящий доклад опровергает механистический взгляд Декарта, опираясь на исламские первоисточники.</p>
+    </section>
+
+    <!-- Раздел 1 -->
+    <section class="section" id="sec1">
+        <h2>1. Животные обладают духом и являются общинами, подобными людям</h2>
+        <p>Коран утверждает, что животные — не просто биомашины, а творения, наделённые определённой формой жизни и духа. Всевышний говорит:</p>
+        <div class="quote">
+            <div class="arabic">وَمَا مِن دَآبَّةٍ فِى ٱلْأَرْضِ وَلَا طَـٰٓئِرٍ يَطِيرُ بِجَنَاحَيْهِ إِلَّآ أُمَمٌ أَمْثَالُكُم ۚ مَّا فَرَّطْنَا فِى ٱلْكِتَـٰبِ مِن شَىْءٍ ۚ ثُمَّ إِلَىٰ رَبِّهِمْ يُحْشَرُونَ</div>
+            «Нет ни одного животного на земле и птицы, летающей на двух крыльях, которые не были бы общинами, подобными вам. Мы ничего не упустили в Писании. Затем они будут собраны к своему Господу» (сура «аль-Анам», 6:38).
+        </div>
+        <p>Слово <strong>«умам»</strong> (общины) указывает на то, что животные, как и люди, образуют сообщества со своими законами, способами общения и жизненным циклом. Оборот «подобными вам» означает, что в их существовании, пропитании и конечной участи есть общие черты с человеческим родом. Это прямо противоречит представлению о бездушной машине, не имеющей никакой формы внутренней жизни.</p>
+    </section>
+
+    <!-- Раздел 2 -->
+    <section class="section" id="sec2">
+        <h2>2. Животные славят Аллаха и поклоняются Ему</h2>
+        <p>Согласно Корану, все творения осознанно прославляют Творца, даже если человек не понимает языка этого прославления:</p>
+        <div class="quote">
+            «Семь небес, земля и те, кто на них, славят Его. Нет ничего, что не прославляло бы Его хвалой, однако вы не понимаете их славословия» (сура «аль-Исра», 17:44).
+        </div>
+        <div class="quote">
+            «Разве ты не видел, что Аллаха славят те, кто на небесах и на земле, и птицы с распростёртыми крыльями? Каждый знает свою молитву и своё славословие» (сура «ан-Нур», 24:41).
+        </div>
+        <p>Здесь подчёркивается, что у каждого животного есть своя <strong>«молитва» (салят)</strong> и особое прославление, которые известны Аллаху. Сознательное поклонение невозможно без души и способности к направленному действию, что полностью исключает механическую бездушность.</p>
+    </section>
+
+    <!-- Раздел 3 -->
+    <section class="section" id="sec3">
+        <h2>3. Права животных и запрет жестокости в Коране и Сунне</h2>
+        <p>Исламское право с самого начала гарантировало животным защиту от жестокости. Пророк Мухаммад (ﷺ) категорически запрещал мучить животных, использовать их в качестве мишеней, перегружать работой или оставлять без пищи. Сообщается, что Посланник Аллаха сказал:</p>
+        <div class="quote">
+            «Одна женщина была наказана из-за кошки. Она заперла её, пока та не умерла, и не кормила её, и не отпустила её поесть земных тварей. За это она вошла в Огонь» (хадис привёл аль-Бухари, № 3318; Муслим, № 2619).
+        </div>
+        <p>Если бы животное было бесчувственной машиной, наказание за причинение ему голодной смерти было бы лишено смысла. Шариат не накладывает нравственных обязательств по отношению к бездушным предметам. Наличие запретов доказывает, что животное способно страдать и обладает ценностью перед Богом.</p>
+    </section>
+
+    <!-- Раздел 4 -->
+    <section class="section" id="sec4">
+        <h2>4. Животные обладают чувствами и получают воздаяние за страдания</h2>
+        <p>Хадисы свидетельствуют, что животные испытывают боль, страх и радость, и что Всевышний не оставляет без внимания несправедливость даже между животными. В одном из хадисов говорится:</p>
+        <div class="quote">
+            «В День воскресения права будут восстановлены даже между безрогой и рогатой овцой» (Муслим, № 2582).
+        </div>
+        <p>Кроме того, Пророк (ﷺ) сказал:</p>
+        <div class="quote">
+            «За каждое существо с влажной печенью (живое существо) — награда» (аль-Бухари, № 2363; Муслим, № 2244).
+        </div>
+        <p>Это означает, что проявление милосердия к любому животному приносит мусульманину награду от Аллаха. Понятие милосердия применимо только к тому, кто испытывает потребность и способен чувствовать боль, — машине сострадание не требуется.</p>
+    </section>
+
+    <!-- Раздел 5 -->
+    <section class="section" id="sec5">
+        <h2>5. Животные в День воскресения и справедливость</h2>
+        <p>Исламское учение говорит о том, что животные будут воскрешены в Судный день для восстановления справедливости, а затем обращены в прах. Передаётся, что Пророк (ﷺ) сказал:</p>
+        <div class="quote">
+            «Все творения будут воскрешены в День воскресения: животные, звери, птицы — все, и восторжествует справедливость так, что безрогой овце будет воздано от рогатой. Затем будет сказано: “Станьте прахом!”»
+        </div>
+        <p>Воздаяние животным предполагает, что они были субъектами определённой формы бытия, заслуживающими справедливости. Бездушный автомат не может быть воскрешён для суда и наказания обидчика, поскольку он не испытывал несправедливости в земной жизни.</p>
+    </section>
+
+    <!-- Заключение -->
+    <section class="conclusion" id="concl">
+        <h2>Заключение</h2>
+        <p>Концепция Рене Декарта о животных-автоматах, лишённых души и чувствительности, в корне противоречит исламскому мировоззрению. Коран и Сунна утверждают, что животные — живые общины, прославляющие Аллаха, обладающие духовным измерением, нуждающиеся в милосердии и справедливости. Их страдания небезразличны Творцу, и они будут воскрешены для воздаяния. Таким образом, исламский взгляд не только опровергает механистическую теорию Нового времени, но и закладывает этическую основу для бережного и ответственного отношения ко всем обитателям земли.</p>
+    </section>
+
+    <!-- Источники -->
+    <section class="sources" id="sources">
+        <h2>Источники</h2>
+        <ul>
+            <li>Коран / перевод смыслов: Э. Кулиев.</li>
+            <li>Сахих аль-Бухари, хадисы № 2363, 3318.</li>
+            <li>Сахих Муслим, хадисы № 2244, 2582, 2619.</li>
+            <li>Декарт Р. Рассуждение о методе. Часть V.</li>
+            <li>Декарт Р. Страсти души.</li>
+            <li>Ибн Касир. Тафсир Корана (комментарий к 6:38, 17:44).</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>© 2026 Доклад создан в образовательных целях на основе исламских первоисточников.</p>
+    </footer>
+</div>
+
+<!-- Кнопка "Наверх" -->
+<a href="#top" class="back-to-top" id="backToTop" title="Наверх">↑</a>
+
+<script>
+    (function() {
+        // Плавная прокрутка для якорных ссылок (в том числе из плана)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === "#" || href === "#top") {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    e.preventDefault();
+                    return;
+                }
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Показать/скрыть кнопку "Наверх"
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 400) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+    })();
+</script>
+
+</body>
+</html>
